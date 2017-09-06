@@ -1,5 +1,5 @@
 const isFunction = functionToCheck => {
-  var getType = {};
+  const getType = {};
   return (
     (functionToCheck &&
       getType.toString.call(functionToCheck) === '[object Function]') ||
@@ -7,4 +7,10 @@ const isFunction = functionToCheck => {
   );
 };
 
-module.exports = { isFunction };
+const compose = (...fns) =>
+  fns.reduce(
+    (prevFn, nextFn) => value => nextFn(prevFn(value)),
+    value => value
+  );
+
+module.exports = { isFunction, compose };

@@ -1,31 +1,35 @@
 const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
-module.exports = () => ({
-  entry: {
-    main: path.resolve(__dirname, './src/index.jsx'),
-  },
+module.exports = {
+  entry: './src/app.jsx',
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   output: {
-    filename: '[name].[chunkhash].js',
-    path: path.resolve(__dirname, './dist'),
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
-  devtool: 'source-map',
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['es2015', 'react'],
-            },
-          },
-        ],
-        exclude: ['/node_modules/'],
+        include: [path.resolve(__dirname, 'src')],
+        exclude: [path.resolve(__dirname, 'node_modules')],
+        loader: 'babel-loader',
       },
     ],
   },
-});
+  devtool: 'source-map',
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    port: 8080,
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: './src/index.html',
+    }),
+  ],
+};
