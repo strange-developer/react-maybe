@@ -1,12 +1,12 @@
 import { isFunction } from './utils';
 
-class Either {
+class Maybe {
   constructor(value) {
     this.value = value;
   }
 
   static of(value) {
-    return new Either(value);
+    return new Maybe(value);
   }
 
   isNothing() {
@@ -15,38 +15,32 @@ class Either {
 
   map(fn) {
     if (this.isNothing()) {
-      return Either.of(null);
+      return Maybe.of(null);
     }
-    return Either.of(fn(this.value));
-  }
-
-  cata(left, right) {
-    this.either = left;
-    this.orElse = right;
-    return this;
+    return Maybe.of(fn(this.value));
   }
 
   mapAll(fnList) {
-    const eitherContext = this;
+    const maybeContext = this;
     if (fnList.constructor === Array) {
       return fnList.reduce(
         (prevValue, currVal) => prevValue.map(currVal),
-        eitherContext
+        maybeContext
       );
     } else if (isFunction(fnList)) {
-      return eitherContext.map(fnList);
+      return maybeContext.map(fnList);
     } else {
-      return eitherContext;
+      return maybeContext;
     }
   }
 
-  resolve() {
+  resolve(falsyComponent, truthyComponent) {
     if (this.isNothing() || this.value === false) {
-      return this.either;
+      return falsyComponent;
     } else {
-      return this.orElse;
+      return truthyComponent;
     }
   }
 }
 
-export default Either;
+export default Maybe;
