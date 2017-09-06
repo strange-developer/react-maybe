@@ -6,7 +6,15 @@ import Either from './maybe';
 ReactDOM.render(
   <Either
     of={true}
-    map={[() => false, () => true]}
+    map={[
+      () => false,
+      () => false,
+      val => {
+        console.log(val);
+        return true;
+      },
+      val => val,
+    ]}
     either={<Hello />}
     orElse={<p>blah</p>}
   />,
