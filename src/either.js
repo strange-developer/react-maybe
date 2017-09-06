@@ -34,12 +34,11 @@ class Maybe {
     }
   }
 
-  resolve(falsyComponent, truthyComponent) {
+  fold(falsyComponent, truthyComponent) {
     if (this.isNothing() || this.value === false) {
       return falsyComponent;
-    } else {
-      return truthyComponent;
     }
+    return truthyComponent;
   }
 }
 

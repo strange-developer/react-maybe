@@ -4,7 +4,7 @@ import Either from './either';
 const Component = ({ of, map, either, orElse }) => {
   const element = Either.of(of)
     .mapAll(map)
-    .resolve(orElse, either);
+    .fold(orElse, either);
 
   return element;
 };
