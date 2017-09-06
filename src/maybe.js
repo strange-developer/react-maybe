@@ -29,9 +29,9 @@ class Maybe {
       );
     } else if (isFunction(fnList)) {
       return maybeContext.map(fnList);
-    } else {
-      return maybeContext;
     }
+
+    return maybeContext;
   }
 
   fold(falsyComponent, truthyComponent) {
