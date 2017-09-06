@@ -1,7 +1,7 @@
 import { isFunction } from './utils';
 
 function Either(value) {
-  this.__value = value;
+  this.value = value;
 }
 
 Either.of = function(value) {
@@ -9,7 +9,7 @@ Either.of = function(value) {
 };
 
 Either.prototype.isNothing = function() {
-  return this.__value === null || this.__value === undefined;
+  return this.value === null || this.value === undefined;
 };
 
 Either.prototype.map = function(fn) {
@@ -40,7 +40,7 @@ Either.prototype.mapAll = fnList => {
 };
 
 Either.prototype.resolve = () => {
-  if (this.isNothing() || this.__value === false) {
+  if (this.isNothing() || this.value === false) {
     return this.right;
   } else {
     return this.left;

@@ -1,7 +1,10 @@
 import React from 'react';
-import Maybe from './maybe';
+import Either from './either';
 
 const Component = ({ of, map, either, orElse }) =>
-  Maybe.of(of).cata(either, orElse).mapAll(map).resolve();
+  Either.of(of)
+    .cata(either, orElse)
+    .mapAll(map)
+    .resolve();
 
 export default Component;

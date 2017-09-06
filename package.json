@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "up": "webpack-dev-server --content-base src/"
+    "run": "webpack-dev-server --content-base src/",
+    "test": "mocha-webpack --webpack-config webpack.config-test.js -w \"test/**/*.test.js\"",
+    "test:watch": "mocha-webpack --webpack-config webpack.config-test.js -w \"test/**/*.test.js\""
   },
   "author": "Chamir Bodasing",
   "license": "MIT",
@@ -17,8 +19,19 @@
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-chai-expect": "^1.1.1",
+    "eslint-plugin-chai-friendly": "^0.4.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "mocha": "^3.5.0",
+    "mocha-webpack": "^0.7.0",
     "path": "^0.12.7",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "^2.7.1",
+    "webpack-node-externals": "^1.6.0"
   }
 }
