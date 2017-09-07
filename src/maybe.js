@@ -22,7 +22,9 @@ class Maybe {
 
   mapAll(fnList) {
     const maybeContext = this;
-    if (fnList.constructor === Array) {
+    if (fnList === null || fnList === undefined) {
+      return maybeContext;
+    } else if (fnList.constructor === Array) {
       return fnList.reduce((prevValue, currVal) => {
         if (isFunction(currVal)) {
           return prevValue.map(currVal);

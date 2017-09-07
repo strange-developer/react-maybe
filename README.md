@@ -1,2 +1,2 @@
-# react-either
+# react-maybe
 Render one of two components
