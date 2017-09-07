@@ -5,7 +5,7 @@
   "main": "./index.js",
   "repository": {
     "type": "Git",
-    "url": "https://github.com/strange-developer/react-either"
+    "url": "https://github.com/strange-developer/react-maybe"
   },
   "scripts": {
     "test":
