@@ -1,15 +1,15 @@
 {
   "name": "react-maybe",
-  "version": "1.0.0",
+  "version": "0.0.3",
   "description": "",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "test":
       "mocha-webpack --c --webpack-config webpack.config.js \"test/**/*.test.js\"",
     "test:watch":
       "mocha-webpack --c -w --webpack-config webpack.config.js \"test/**/*.test.js\""
   },
-  "author": "Chamir Bodasing",
+  "author": "strange-developer",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
