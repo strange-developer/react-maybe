@@ -3,6 +3,10 @@
   "version": "0.0.3",
   "description": "",
   "main": "./index.js",
+  "repository": {
+    "type": "Git",
+    "url": "https://github.com/strange-developer/react-either"
+  },
   "scripts": {
     "test":
       "mocha-webpack --c --webpack-config webpack.config.js \"test/**/*.test.js\"",
