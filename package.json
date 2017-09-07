@@ -6,8 +6,10 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "start": "./node_modules/.bin/webpack-dev-server --progress",
-    "test": "mocha-webpack --webpack-config webpack.config-test.js \"test/**/*.test.js\"",
-    "test:watch": "mocha-webpack --webpack-config webpack.config-test.js -w \"test/**/*.test.js\""
+    "test":
+      "mocha-webpack --c --webpack-config webpack.config-test.js \"test/**/*.test.js\"",
+    "test:watch":
+      "mocha-webpack --c -w --webpack-config webpack.config-test.js \"test/**/*.test.js\""
   },
   "author": "Chamir Bodasing",
   "license": "MIT",
@@ -36,6 +38,8 @@
     "mocha": "^3.5.0",
     "mocha-webpack": "^0.7.0",
     "path": "^0.12.7",
+    "sinon": "^3.2.1",
+    "sinon-chai": "^2.13.0",
     "webpack": "^3.5.6",
     "webpack-dev-server": "^2.7.1",
     "webpack-node-externals": "^1.6.0"

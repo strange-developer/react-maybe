@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/app.jsx',
+  entry: './src/index.jsx',
   resolve: {
     extensions: ['.js', '.jsx'],
   },
