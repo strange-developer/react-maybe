@@ -1,4 +1,5 @@
-# react-maybe  [![Build Status](https://travis-ci.org/strange-developer/react-maybe.svg?branch=master)](https://travis-ci.org/strange-developer/react-maybe)
+# react-maybe
+[![Build Status](https://travis-ci.org/strange-developer/react-maybe.svg?branch=master)](https://travis-ci.org/strange-developer/react-maybe)
 Render one of two React components
 
 
