@@ -1,8 +1,7 @@
 # react-maybe
-[![Build Status](https://travis-ci.org/strange-developer/react-maybe.svg?branch=master)](https://travis-ci.org/strange-developer/react-maybe)
 Render one of two React components
 
-
+[![Build Status](https://travis-ci.org/strange-developer/react-maybe.svg?branch=master)](https://travis-ci.org/strange-developer/react-maybe)
 
 react-maybe is build behind a monad which conditionally displays one of two components based on the value contained in the `of` prop. If the value is one of `null`, `undefined` or `false`, the `orElse` component will be displayed. In all other cases the component passed to the `either` prop will be displayed.
 
