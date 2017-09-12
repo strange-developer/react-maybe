@@ -53,11 +53,9 @@ describe('Either', () => {
   });
   describe('mapAll', () => {
     it('executes an array of functions', () => {
-      // console.log('FIGHT');
       const testFns = [val => val, val => val, () => 'executed'];
       const actual = Maybe.of({ definitely: 'monads rock!' }).mapAll(testFns);
       expect(actual).to.deep.eq(Maybe.of('executed'));
-      // console.log('BREAK');
     });
     it('executes a single function', () => {
       const testFn = sinon.spy();
