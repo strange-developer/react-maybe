@@ -8,10 +8,8 @@
     "url": "https://github.com/strange-developer/react-maybe"
   },
   "scripts": {
-    "test":
-      "mocha-webpack --c --webpack-config webpack.config.js \"test/**/*.test.js\"",
-    "test:watch":
-      "mocha-webpack --c -w --webpack-config webpack.config.js \"test/**/*.test.js\""
+    "test": "mocha-webpack --c --webpack-config webpack.config.js \"test/**/*.test.js\"",
+    "test:watch": "mocha-webpack --c -w --webpack-config webpack.config.js \"test/**/*.test.js\""
   },
   "author": "strange-developer",
   "license": "MIT",

@@ -53,9 +53,11 @@ describe('Either', () => {
   });
   describe('mapAll', () => {
     it('executes an array of functions', () => {
+      // console.log('FIGHT');
       const testFns = [val => val, val => val, () => 'executed'];
       const actual = Maybe.of({ definitely: 'monads rock!' }).mapAll(testFns);
       expect(actual).to.deep.eq(Maybe.of('executed'));
+      // console.log('BREAK');
     });
     it('executes a single function', () => {
       const testFn = sinon.spy();
@@ -64,10 +66,10 @@ describe('Either', () => {
     });
     it('executes returns back context if no function is supplied', () => {
       expect(Maybe.of('monads rock!').mapAll(['', '', '', 100])).to.deep.eq(
-        Maybe.of('monads rock!')
+        Maybe.of('monads rock!'),
       );
       expect(Maybe.of('monads rock!').mapAll(100)).to.deep.eq(
-        Maybe.of('monads rock!')
+        Maybe.of('monads rock!'),
       );
     });
     it('executes executes a single function', () => {
