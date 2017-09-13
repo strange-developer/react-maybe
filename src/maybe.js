@@ -1,4 +1,4 @@
-import { isFunction } from './utils';
+import { isArray, isFunction } from './utils';
 
 class Maybe {
   constructor(value) {
@@ -14,35 +14,24 @@ class Maybe {
   }
 
   map(fn) {
-    if (this.isNothing()) {
-      return Maybe.of(null);
-    }
-    return Maybe.of(fn(this.value));
+    const newValue = this.isNothing() ? null : fn(this.value);
+    return Maybe.of(newValue);
   }
 
   mapAll(fnList) {
-    const maybeContext = this;
-    if (fnList === null || fnList === undefined) {
-      return maybeContext;
-    } else if (fnList.constructor === Array) {
-      return fnList.reduce((prevValue, currVal) => {
-        if (isFunction(currVal)) {
-          return prevValue.map(currVal);
-        }
-        return prevValue;
-      }, maybeContext);
+    if (isArray(fnList)) {
+      return fnList.reduce(
+        (prevValue, currVal) => (isFunction(currVal) ? prevValue.map(currVal) : prevValue),
+        this,
+      );
     } else if (isFunction(fnList)) {
-      return maybeContext.map(fnList);
+      return this.map(fnList);
     }
-
-    return maybeContext;
+    return this;
   }
 
   fold(falsyComponent, truthyComponent) {
-    if (this.isNothing() || this.value === false) {
-      return falsyComponent;
-    }
-    return truthyComponent;
+    return this.isNothing() || this.value === false ? falsyComponent : truthyComponent;
   }
 }
 

@@ -1,10 +1,6 @@
-const isFunction = functionToCheck => {
-  const getType = {};
-  return (
-    (functionToCheck &&
-      getType.toString.call(functionToCheck) === '[object Function]') ||
-    false
-  );
-};
+const isArray = arrayToCheck => Array.isArray(arrayToCheck);
 
-module.exports = { isFunction };
+const isFunction = functionToCheck => (functionToCheck &&
+  {}.toString.call(functionToCheck) === '[object Function]') || false;
+
+module.exports = { isArray, isFunction };
