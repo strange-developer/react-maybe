@@ -9,8 +9,10 @@ value contained in the `of` prop. If the value is one of `null`, `undefined` or 
 `orElse` component will be displayed. In all other cases the component passed to the `either` prop
 will be displayed.
 
-Additionally, the value in the `of` prop can be altered through the use of the `map` prop. The `map`
-prop could be a function or an array of functions.
+The value in the `of` prop can be altered through the use `map` prop. The `map` prop could be a
+function or an array of functions. The value of `of` will be passed to the first `map` function,
+each additional `map` function will receive the return value of the previous one in the array. The
+return value of the last `map` funtion will then be used to determine which component to render.
 
 ### Installation
 
