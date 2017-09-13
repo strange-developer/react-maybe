@@ -28,3 +28,21 @@ Accepts a component that will be rendered in all cases where the value of the `o
 
 ### orElse
 Accepts a component that will be rendered when the value of the `of` prop is equal to `undefined`, `null`, or `false`.
+
+## Running tests
+
+You can either run the tests with npm or docker.
+
+#### With npm
+
+```sh
+$ npm i
+$ npm test
+```
+
+#### With docker
+
+```sh
+$ docker-compose run --rm app npm i
+$ docker-compose up
+```
