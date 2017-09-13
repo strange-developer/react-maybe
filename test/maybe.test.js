@@ -53,17 +53,23 @@ describe('Either', () => {
   });
   describe('mapAll', () => {
     it('executes an array of functions', () => {
-      const testFns = [val => val, val => val, () => 'executed'];
-      const actual = Maybe.of({ definitely: 'monads rock!' }).mapAll(testFns);
-      expect(actual).to.deep.eq(Maybe.of('executed'));
+      const testFns = [
+        val => Object.assign({}, val, { monadType: 'maybe' }),
+        val => val,
+      ];
+      const actual = Maybe.of({ username: 'strange-developer' }).mapAll(testFns);
+      const expected = Maybe.of({ username: 'strange-developer', monadType: 'maybe' });
+      expect(actual).to.deep.eq(expected);
     });
     it('executes a single function', () => {
       const testFn = sinon.spy();
-      Maybe.of({ definitely: 'monads rock!' }).mapAll(testFn);
+      const value = { definitely: 'monads rock!' };
+      Maybe.of(value).mapAll(testFn);
       expect(testFn).to.have.been.calledOnce;
+      expect(testFn).to.be.calledWith(value);
     });
     it('executes returns back context if no function is supplied', () => {
-      expect(Maybe.of('monads rock!').mapAll(['', '', '', 100])).to.deep.eq(
+      expect(Maybe.of('monads rock!').mapAll(['', null, undefined, false, 100])).to.deep.eq(
         Maybe.of('monads rock!'),
       );
       expect(Maybe.of('monads rock!').mapAll(100)).to.deep.eq(
