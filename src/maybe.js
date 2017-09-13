@@ -14,7 +14,8 @@ class Maybe {
   }
 
   map(fn) {
-    return Maybe.of(this.isNothing() ? null : fn(this.value));
+    const newValue = this.isNothing() ? null : fn(this.value);
+    return Maybe.of(newValue);
   }
 
   mapAll(fnList) {
