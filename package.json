@@ -2,12 +2,13 @@
   "name": "react-maybe",
   "version": "1.0.3",
   "description": "",
-  "main": "./index.js",
+  "main": "./lib/index.js",
   "repository": {
     "type": "Git",
     "url": "https://github.com/strange-developer/react-maybe"
   },
   "scripts": {
+    "build:production": "babel src --out-dir lib",
     "lint": "./node_modules/.bin/eslint --ext .js .",
     "test": "mocha-webpack --c --webpack-config webpack.config.js \"test/**/*.test.js\"",
     "test:watch": "mocha-webpack --c -w --webpack-config webpack.config.js \"test/**/*.test.js\""
