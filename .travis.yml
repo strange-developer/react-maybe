@@ -1,3 +1,16 @@
 language: node_js
+cache:
+  directories:
+    - ~/.npm
+    - node_modules
+notifications:
+  email: false
 node_js:
-  - 8
+  - '8'
+before_script:
+  - npm prune
+after_success:
+  - npm run build:production
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
