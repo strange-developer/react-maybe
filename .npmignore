@@ -1,7 +1,9 @@
 src/
 test/
+.babelrc
 .eslintrc
 .gitignore
+.tmp
 .travis.yml
 docker-compose.yml
 Dockerfile
