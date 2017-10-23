@@ -3,7 +3,7 @@ test/
 .babelrc
 .eslintrc
 .gitignore
-.tmp
+.tmp/
 .travis.yml
 docker-compose.yml
 Dockerfile
