@@ -6,3 +6,4 @@ test/
 docker-compose.yml
 Dockerfile
 package-lock.json
+webpack.config.js
