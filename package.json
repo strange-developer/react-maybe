@@ -1,14 +1,16 @@
 {
   "name": "react-maybe",
-  "version": "1.0.3",
+  "version": "0.0.0-development",
   "description": "",
-  "main": "./index.js",
+  "main": "./lib/index.js",
   "repository": {
     "type": "Git",
     "url": "https://github.com/strange-developer/react-maybe"
   },
   "scripts": {
+    "build:production": "babel src --out-dir lib",
     "lint": "./node_modules/.bin/eslint --ext .js .",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "test": "mocha-webpack --c --webpack-config webpack.config.js \"test/**/*.test.js\"",
     "test:watch": "mocha-webpack --c -w --webpack-config webpack.config.js \"test/**/*.test.js\""
   },
@@ -34,6 +36,7 @@
     "mocha": "^3.5.3",
     "mocha-webpack": "^0.7.0",
     "path": "^0.12.7",
+    "semantic-release": "^8.2.0",
     "sinon": "^3.2.1",
     "sinon-chai": "^2.13.0",
     "webpack": "^3.5.6",
