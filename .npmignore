@@ -1,11 +1,12 @@
-src/
-test/
 .babelrc
+.eslintignore
 .eslintrc
 .gitignore
-.tmp
 .travis.yml
+coverage/
 docker-compose.yml
 Dockerfile
+jest_0/
 package-lock.json
-webpack.config.js
+src/
+test/

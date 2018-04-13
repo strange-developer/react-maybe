@@ -1,97 +1,92 @@
-import chai, { expect } from 'chai';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
 import Maybe from '../src/maybe';
 
-chai.use(sinonChai);
-
 describe('Either', () => {
-  it('creates wrapped instance', () => {
+  test('creates wrapped instance', () => {
     const expected = Object.create(Maybe.prototype, {
       value: { value: 'test', enumerable: true },
     });
-    expect(new Maybe('test')).to.deep.eq(expected);
+    expect(new Maybe('test')).toEqual(expected);
   });
-  it('of', () => {
+  test('of', () => {
     const expected = new Maybe('test');
-    expect(Maybe.of('test')).to.deep.eq(expected);
+    expect(Maybe.of('test')).toEqual(expected);
   });
   describe('isNothing', () => {
-    it('returns true for null', () => {
-      expect(Maybe.of(null).isNothing()).to.be.true;
+    test('returns true for null', () => {
+      expect(Maybe.of(null).isNothing()).toBeTruthy();
     });
-    it('returns true for undefined', () => {
-      expect(Maybe.of(undefined).isNothing()).to.be.true;
+    test('returns true for undefined', () => {
+      expect(Maybe.of(undefined).isNothing()).toBeTruthy();
     });
-    it('returns false for some value', () => {
-      expect(Maybe.of('').isNothing()).to.be.false;
-      expect(Maybe.of('something').isNothing()).to.be.false;
-      expect(Maybe.of(54).isNothing()).to.be.false;
-      expect(Maybe.of({ value: 'something' }).isNothing()).to.be.false;
+    test('returns false for some value', () => {
+      expect(Maybe.of('').isNothing()).toBeFalsy();
+      expect(Maybe.of('something').isNothing()).toBeFalsy();
+      expect(Maybe.of(54).isNothing()).toBeFalsy();
+      expect(Maybe.of({ value: 'something' }).isNothing()).toBeFalsy();
     });
   });
   describe('map', () => {
-    it('returns Maybe(null) if wrapped value is null', () => {
+    test('returns Maybe(null) if wrapped value is null', () => {
       const testFn = () => {};
-      expect(Maybe.of(undefined).map(testFn)).to.deep.eq(Maybe.of(null));
+      expect(Maybe.of(undefined).map(testFn)).toEqual(Maybe.of(null));
     });
-    it('executes function if wrapped value is not null', () => {
-      const spy = sinon.spy();
+    test('executes function if wrapped value is not null', () => {
+      const spy = jest.fn();
       Maybe.of({ definitely: 'monads rock!' }).map(spy);
-      expect(spy).to.have.been.calledOnce;
+      expect(spy).toHaveBeenCalledTimes(1);
     });
-    it('does not execute function if wrapped value is null', () => {
-      const spy = sinon.spy();
+    test('does not execute function if wrapped value is null', () => {
+      const spy = jest.fn();
       Maybe.of(null).map(spy);
-      expect(spy).to.not.have.been.called;
+      expect(spy).toHaveBeenCalledTimes(0);
     });
-    it('returns a Maybe', () => {
+    test('returns a Maybe', () => {
       const testFn = val => val;
       const actual = Maybe.of({ definitely: 'monads rock!' }).map(testFn);
-      expect(actual instanceof Maybe).to.be.true;
+      expect(actual instanceof Maybe).toBeTruthy();
     });
   });
   describe('mapAll', () => {
-    it('executes an array of functions', () => {
+    test('executes an array of functions', () => {
       const testFns = [
         val => Object.assign({}, val, { monadType: 'maybe' }),
         val => val,
       ];
       const actual = Maybe.of({ username: 'strange-developer' }).mapAll(testFns);
       const expected = Maybe.of({ username: 'strange-developer', monadType: 'maybe' });
-      expect(actual).to.deep.eq(expected);
+      expect(actual).toEqual(expected);
     });
-    it('executes a single function', () => {
-      const testFn = sinon.spy();
+    test('executes a single function', () => {
+      const testFn = jest.fn();
       const value = { definitely: 'monads rock!' };
       Maybe.of(value).mapAll(testFn);
-      expect(testFn).to.have.been.calledOnce;
-      expect(testFn).to.be.calledWith(value);
+      expect(testFn).toHaveBeenCalledTimes(1);
+      expect(testFn).toHaveBeenCalledWith(value);
     });
-    it('executes returns back context if no function is supplied', () => {
-      expect(Maybe.of('monads rock!').mapAll(['', null, undefined, false, 100])).to.deep.eq(
+    test('executes returns back context if no function is supplied', () => {
+      expect(Maybe.of('monads rock!').mapAll(['', null, undefined, false, 100])).toEqual(
         Maybe.of('monads rock!'),
       );
-      expect(Maybe.of('monads rock!').mapAll(100)).to.deep.eq(
+      expect(Maybe.of('monads rock!').mapAll(100)).toEqual(
         Maybe.of('monads rock!'),
       );
     });
-    it('executes executes a single function', () => {
-      const testFn = sinon.spy();
+    test('executes executes a single function', () => {
+      const testFn = jest.fn();
       Maybe.of('monads rock!').mapAll(testFn);
-      expect(testFn).to.have.been.calledOnce;
+      expect(testFn).toHaveBeenCalledTimes(1);
     });
   });
   describe('fold', () => {
-    it('returns falsy component', () => {
+    test('returns falsy component', () => {
       const expected = 'falsy value';
       const actual = Maybe.of(null).fold('falsy value', 'truthy value');
-      expect(actual).to.deep.eq(expected);
+      expect(actual).toEqual(expected);
     });
-    it('returns truthy component', () => {
+    test('returns truthy component', () => {
       const expected = 'truthy value';
       const actual = Maybe.of({}).fold('falsy value', 'truthy value');
-      expect(actual).to.deep.eq(expected);
+      expect(actual).toEqual(expected);
     });
   });
 });

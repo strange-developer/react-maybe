@@ -1,11 +1,12 @@
 {
-  "extends": "airbnb",
   "env": {
-    "mocha": true
+    "browser": true,
+    "jest": true,
+    "node": true
   },
+  "extends": "airbnb-base",
   "rules": {
-    "no-unused-expressions": 0,
-    "chai-friendly/no-unused-expressions": 2
-  },
-  "plugins": ["chai-friendly"]
+    "function-paren-newline": ["error", "consistent"],
+    "object-curly-newline": ["error", { "consistent": true }]
+  }
 }

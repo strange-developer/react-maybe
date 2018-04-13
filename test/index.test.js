@@ -1,8 +1,7 @@
-import { expect } from 'chai';
 import Either from '../src/index';
 
 describe('<EitherComponent />', () => {
-  it('returns either value', () => {
+  test('returns either value', () => {
     const expected = 'truthy';
     const props = {
       of: true,
@@ -10,9 +9,9 @@ describe('<EitherComponent />', () => {
       either: 'truthy',
       orElse: 'falsy',
     };
-    expect(Either(props)).to.deep.equal(expected);
+    expect(Either(props)).toEqual(expected);
   });
-  it('returns orElse value', () => {
+  test('returns orElse value', () => {
     const expected = 'falsy';
     const props = {
       of: true,
@@ -20,6 +19,6 @@ describe('<EitherComponent />', () => {
       either: 'truthy',
       orElse: 'falsy',
     };
-    expect(Either(props)).to.deep.equal(expected);
+    expect(Either(props)).toEqual(expected);
   });
 });
