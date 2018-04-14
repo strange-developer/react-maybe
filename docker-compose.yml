@@ -4,4 +4,4 @@ services:
     build: "."
     container_name: "react-maybe"
     volumes:
-      - ./:/app
+      - ./:/home/node/app
