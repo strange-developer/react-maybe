@@ -24,7 +24,8 @@ class Maybe {
         (prevValue, currVal) => (isFunction(currVal) ? prevValue.map(currVal) : prevValue),
         this,
       );
-    } else if (isFunction(fnList)) {
+    }
+    if (isFunction(fnList)) {
       return this.map(fnList);
     }
     return this;

@@ -2,16 +2,14 @@ language: node_js
 cache:
   directories:
     - ~/.npm
-    - node_modules
 notifications:
   email: false
 node_js:
-  - '8'
-before_script:
-  - npm prune
+  - '10'
 after_success:
-  - npm run build:production
-  - npm run semantic-release
+  - npm run build
+  - npm run travis-deploy-once "npm run semantic-release"
+  - npm run coveralls
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
