@@ -1,0 +1,29 @@
+{
+  "cacheDirectory": "<rootDir>/jest_modules",
+  "coveragePathIgnorePatterns": [
+    "/node_modules/",
+    "<rootDir>/lib"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "branches": 100,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100
+    }
+  },
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ],
+  "moduleFileExtensions": [
+    "js"
+  ],
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "<rootDir>/lib"
+  ]
+}

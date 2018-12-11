@@ -2,6 +2,5 @@ version: "3.0"
 services:
   app:
     build: "."
-    container_name: "react-maybe"
     volumes:
       - ./:/home/node/app

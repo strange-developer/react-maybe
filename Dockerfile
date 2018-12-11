@@ -1,5 +1,10 @@
-FROM node:carbon-alpine
+FROM node:dubnium-alpine
 
-WORKDIR /home/node/app
+ENV HOME /home/node/app
 
-CMD ["npm", "test"]
+WORKDIR $HOME
+
+VOLUME [$HOME]
+
+RUN chown -Rv node:node $HOME
+USER node

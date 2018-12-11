@@ -3,34 +3,39 @@
   "version": "0.0.0-development",
   "description": "",
   "main": "./lib/index.js",
+  "files": [
+    "lib/"
+  ],
   "repository": {
     "type": "Git",
     "url": "https://github.com/strange-developer/react-maybe"
   },
   "scripts": {
-    "build:production": "babel src --out-dir lib",
+    "build": "babel src --out-dir lib",
     "lint": "./node_modules/.bin/eslint --ext .js .",
     "semantic-release": "semantic-release",
     "test": "npm run lint && npm run test:vulnerabilities && npm run test:scripts",
     "test:scripts": "jest --coverage",
     "test:scripts:watch": "npm run test:scripts -- --watchAll",
-    "test:vulnerabilities": "nsp check"
+    "test:vulnerabilities": "npm audit"
   },
   "author": "strange-developer",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-jest": "^22.4.3",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.11.0",
-    "jest": "^22.4.3",
-    "nsp": "^3.2.1",
-    "semantic-release": "^15.1.7"
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^23.6.0",
+    "semantic-release": "^15.12.4",
+    "travis-deploy-once": "^5.0.9"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
