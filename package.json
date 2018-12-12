@@ -17,7 +17,8 @@
     "test": "npm run lint && npm run test:vulnerabilities && npm run test:scripts",
     "test:scripts": "jest --coverage",
     "test:scripts:watch": "npm run test:scripts -- --watchAll",
-    "test:vulnerabilities": "npm audit"
+    "test:vulnerabilities": "npm audit",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "author": "strange-developer",
   "license": "MIT",
